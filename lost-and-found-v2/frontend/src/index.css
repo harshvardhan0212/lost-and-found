@@ -1,0 +1,168 @@
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#f8fafc;
+  color:#111827;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+nav{
+  background:linear-gradient(135deg,#111827,#1f2937);
+  padding:15px 40px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+nav a:hover{
+  opacity:.8;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:30px;
+}
+
+h1,h2{
+  color:#f97316;
+  margin-bottom:20px;
+}
+
+form{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+  max-width:500px;
+  margin:auto;
+}
+
+form input,
+form textarea,
+form select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  margin-bottom:15px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+form button{
+  width:100%;
+  background:#f97316;
+  color:white;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+form button:hover{
+  background:#ea580c;
+}
+
+.item-card{
+  background:white;
+  border:none;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.item-card:hover{
+  transform:translateY(-5px);
+}
+
+.item-card h3{
+  color:#f97316;
+}
+
+.badge{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.badge.lost{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.badge.found{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.claim-btn{
+  margin-top:12px;
+  background:#f97316;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.claim-btn:hover{
+  background:#ea580c;
+}
+
+.message{
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.message.error{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.message.success{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.stat-card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.stat-number{
+  font-size:32px;
+  font-weight:bold;
+  color:#f97316;
+}
+
+.logo{
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  text-decoration:none;
+}
