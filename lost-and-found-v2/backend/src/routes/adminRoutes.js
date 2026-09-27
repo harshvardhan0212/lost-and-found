@@ -14,8 +14,8 @@ const {
   deleteItem,
 } = require("../controllers/adminController");
 
-const { protect } = require("../middlewares/authMiddleware");
-const { isAdmin } = require("../middlewares/adminMiddleware");
+const { protect } = require("../middleware/authMiddleware");
+const { isAdmin } = require("../middleware/adminMiddleware");
 
 // GET  /api/admin/stats        → Dashboard stats
 router.get("/stats", protect, isAdmin, getDashboardStats);

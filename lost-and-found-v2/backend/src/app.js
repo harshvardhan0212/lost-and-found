@@ -1,44 +1,50 @@
 // src/app.js
-// This file sets up the Express app:
-// - Connects middlewares (JSON parsing, CORS)
-// - Registers all routes
-// - Connects to MongoDB
+// Express application setup:
+// - Middlewares (CORS, body parsing)
+// - Database connection
+// - Route registration (Auth, Items, Claims, Admin, Notifications)
+// - Centralized error handling
 
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
-// Import route files
+// Import route modules
 const authRoutes = require("./routes/authRoutes");
 const itemRoutes = require("./routes/itemRoutes");
 const claimRoutes = require("./routes/claimRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
-// --- Middlewares ---
-app.use(cors());           // Allow cross-origin requests (needed for React frontend)
-app.use(express.json());   // Parse incoming JSON request bodies
+// Global Middlewares
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// --- Routes ---
-// All auth routes start with /api/auth
-app.use("/api/auth", authRoutes);
-
-// All item routes start with /api/items
-app.use("/api/items", itemRoutes);
-
-// All claim routes start with /api/claims
-app.use("/api/claims", claimRoutes);
-
-// All admin routes start with /api/admin (protected + admin only)
-app.use("/api/admin", adminRoutes);
-
-// Simple root route to confirm server is running
+// Root health check route
 app.get("/", (req, res) => {
-  res.send("Lost and Found API is running!");
+  res.json({
+    status: "ok",
+    message: "Lost and Found API is running!",
+  });
 });
+
+// Mount Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/items", itemRoutes);
+app.use("/api/claims", claimRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/notifications", notificationRoutes);
+
+// Error Handling Middlewares (Must be registered after routes)
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
